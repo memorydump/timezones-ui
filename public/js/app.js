@@ -13,6 +13,10 @@ angular.module('timeZones', [
         templateUrl: '/views/signup.html'
       })
 
+      .when('/zones', {
+        templateUrl: '/views/zones.html'
+      })
+
       .otherwise({
         templateUrl: '/views/home.html'
       });
