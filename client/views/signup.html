@@ -1,5 +1,4 @@
-<div class="bs-docs-section">
-
+<div class="bs-docs-section" data-ng-controller="signUpCtrl">
   <div class="row">
     <div class="col-lg-3"></div>
     <div class="col-lg-6">
@@ -7,30 +6,30 @@
         <h1 id="forms">Sign Up</h1>
       </div>
       <div class="well bs-component">
-        <form class="form-horizontal">
+        <form name="SignUpForm" class="form-horizontal">
           <fieldset>
             <div class="form-group">
-              <label for="inputEmail" class="col-lg-2 control-label">Name</label>
+              <label for="inputName" class="col-lg-2 control-label">Name</label>
               <div class="col-lg-10">
-                <input type="text" class="form-control" placeholder="Name">
+                <input type="text" data-ng-required="true" class="form-control" id="inputName" data-ng-model="user.fullName" placeholder="Name">
               </div>
             </div>
             <div class="form-group">
               <label for="inputEmail" class="col-lg-2 control-label">Email</label>
               <div class="col-lg-10">
-                <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                <input type="email" data-ng-required="true" class="form-control" id="inputEmail" data-ng-model="user.email"  placeholder="Email">
               </div>
             </div>
             <div class="form-group">
               <label for="inputPassword" class="col-lg-2 control-label">Password</label>
               <div class="col-lg-10">
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                              </div>
+                <input type="password" data-ng-required="true" class="form-control" id="inputPassword" data-ng-model="user.password" placeholder="Password">
+              </div>
             </div>
             <div class="form-group">
               <div class="col-lg-10 col-lg-offset-2">
-                <button class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button class="btn btn-default" data-ng-click="cancel();">Cancel</button>
+                <button type="submit" class="btn btn-primary" data-ng-click="createUser()" data-ng-disabled="!SignUpForm.$valid">Submit</button>
               </div>
             </div>
           </fieldset>

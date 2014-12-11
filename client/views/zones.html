@@ -1,0 +1,112 @@
+<div data-ng-controller="zonesCtrl">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="input-group">
+        <span class="input-group-addon">Filter By:</span>
+        <input type="text" placeholder="Name" class="form-control col-lg-8" data-ng-model="filter.name"/>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-5">
+      <h3>My Zones</h3>
+    </div>
+    <div class="" col="lg-5">
+      <h3>
+        <button href="" class="btn btn-primary" id="add-zone" data-ng-click="add()">Add Zone</button>
+      </h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4" data-ng-repeat="zone in zones | filter:{ name: filter.name }">
+      <div class="bs-component flip-container">
+        <div class="list-group flipper" data-ng-class="{hover: zone.edit}">
+          <div class="list-group-item front">
+            <div class="edit-actions">
+              <a href="" class="fa fa-trash edit-action" data-ng-click="delete($index)"></a>
+              <a href="" class="fa fa-pencil-square-o edit-action" data-ng-click="edit($index)"></a>
+            </div>
+
+            <div class="form-group clearfix">
+              <label class="col-lg-2 control-label">Name</label>
+
+              <div class="col-lg-10">
+                <h5 class="list-group-item-heading">{{zone.name}}</h5>
+              </div>
+            </div>
+
+            <div class="form-group clearfix">
+              <label class="col-lg-2 control-label">City</label>
+
+              <div class="col-lg-10">
+                <h5 class="list-group-item-heading">{{zone.city}}</h5>
+              </div>
+            </div>
+
+            <div class="form-group clearfix">
+              <label class="col-lg-2 control-label">GMT Offset</label>
+
+              <div class="col-lg-10">
+                <h5 class="list-group-item-heading">{{zone.utcOffSet}} GMT</h5>
+              </div>
+            </div>
+
+            <div class="form-group clearfix">
+              <label class="col-lg-2 control-label">Date</label>
+
+              <div class="col-lg-10">
+                <h5 class="list-group-item-heading">{{zone.currentTime | momentFormat : 'M/D/YYYY'}}</h5>
+              </div>
+            </div>
+
+            <div class="form-group clearfix">
+              <label class="col-lg-2 control-label">Time</label>
+
+              <div class="col-lg-10">
+                <h5 class="list-group-item-heading">{{zone.currentTime | momentFormat : 'h:mm:ss A'}}</h5>
+              </div>
+            </div>
+
+          </div>
+
+          <form name="ZoneForm" class="list-group-item form-horizontal back">
+            <div class="form-group">
+              <label for="inputZoneName" class="col-lg-2 control-label">Name</label>
+
+              <div class="col-lg-10">
+                <input type="text" data-ng-required="true" class="form-control" id="inputZoneName" placeholder="Name"
+                       data-ng-model="zone.name">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputCityName" class="col-lg-2 control-label">City Name</label>
+
+              <div class="col-lg-10">
+                <input type="text" data-ng-required="true" class="form-control" id="inputCityName"
+                       placeholder="City Name" data-ng-model="zone.city">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputDiffGMT" class="col-lg-2 control-label">-+ GMT</label>
+
+              <div class="col-lg-10">
+                <input type="text" data-ng-pattern="gmtDiffPattern" data-ng-required="true" class="form-control"
+                       id="inputDiffGMT" placeholder="-+ GMT" data-ng-model="zone.utcOffSet">
+              </div>
+            </div>
+
+            <div class="form-group pull-right">
+              <button href="" class="btn btn-primary" data-ng-click="save($index)" data-ng-disabled="!ZoneForm.$valid">
+                Save
+              </button>
+              <button href="" class="btn btn-default" data-ng-click="cancel($index)">Cancel</button>
+            </div>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
