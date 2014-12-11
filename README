@@ -1,0 +1,12 @@
+// Install
+$ npm install
+$ bower install
+
+// Run Dev
+$ grunt
+
+// Run Production (coming soon)
+$ grunt production
+
+// Build (coming soon)
+$ grunt build
