@@ -5,8 +5,8 @@ $ bower install
 // Run Dev
 $ grunt
 
-// Run Production (coming soon)
+// Run Production
 $ grunt production
 
-// Build (coming soon)
+// Build Client
 $ grunt build
