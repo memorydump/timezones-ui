@@ -8,7 +8,7 @@ var SALT_WORK_FACTOR = 10;
 // User schema
 var User = new db.Schema({
   fullName : { type: String, required: true },
-  email    : { type: String, required: true, unique: true },
+  email    : { type: String, required: true, unique: true, index : true },
   password : { type: String, required: true },
   created  : { type: Date,   default: Date.now },
   token    : String
