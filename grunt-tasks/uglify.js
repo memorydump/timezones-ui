@@ -3,13 +3,55 @@
 var config = require('../config/grunt');
 
 module.exports = function (grunt) {
+
   grunt.config('uglify', {
-    options: {
-      banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+    js: {
+      options: {
+        mangle: false,
+        compress: {
+          'drop_console': true
+        }
+      },
+      files: [
+        {
+          src: 'build/client/js' + '/timezones.js',
+          dest: 'build/client/js' + '/timezones.min.js'
+        },
+        {
+          src: 'build/client/js' + '/vendor.js',
+          dest: 'build/client/js' + '/vendor.min.js'
+        }
+      ]
     },
-    build: {
-      src: 'src/<%= pkg.name %>.js',
-      dest: 'build/<%= pkg.name %>.min.js'
+    vendor: {
+      options: {
+        compress: {
+          'drop_console': true
+        }
+      },
+      files: [
+        {
+          // to come
+        }
+      ]
+    },
+    templates: {
+      options: {
+        mangle: false,
+        compress: {
+          'drop_console': true
+        }
+      },
+      files: [
+        {
+          src: config.build.workDir + '/templates.app.js',
+          dest: config.build.redboxDir + '/templates.app.min.js'
+        },
+        {
+          src: config.build.workDir + '/templates.ext.js',
+          dest: config.build.redboxDir + '/templates.ext.min.js'
+        }
+      ]
     }
   });
 };

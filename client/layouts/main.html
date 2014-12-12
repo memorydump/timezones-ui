@@ -2,44 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="Sat, 01 Dec 2001 00:00:00 GMT">
+
   <title>Time Zones</title>
 
   <base href="/">
 
+  <!-- @if USE_MINIFIED='false' -->
   <link href="/vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
   <link href="/vendor/fontawesome/css/font-awesome.css" rel="stylesheet" type="text/css">
 
   <link href="/css/theme.css" rel="stylesheet" type="text/css">
   <link href="/css/style.css" rel="stylesheet" type="text/css">
+  <!-- @endif -->
 
+  <!-- @if USE_MINIFIED='true' -->
+  <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="/css/theme.min.css" rel="stylesheet" type="text/css"/>
+  <link href="/css/timezones.min.css" rel="stylesheet" type="text/css"/>
+  <!-- @endif -->
+
+  <!-- @if USE_MINIFIED='false' -->
+
+  <!-- Additional Libraries -->
+  <script src="/vendor/lodash/dist/lodash.js"></script>
   <script src="/vendor/modernizr/modernizr.js"></script>
+  <script src="/vendor/moment/moment.js"></script>
 
+  <!-- Angular -->
   <script src="/vendor/angular/angular.min.js"></script>
   <script src="/vendor/angular-route/angular-route.min.js"></script>
   <script src="/vendor/angular-resource/angular-resource.min.js"></script>
 
-  <script src="/vendor/lodash/dist/lodash.js"></script>
-
+  <!-- JQuery -->
   <script src="/vendor/jquery/dist/jquery.js"></script>
 
-  <script src="/vendor/moment/moment.js"></script>
-
+  <!-- Bootstrap -->
   <script src="/vendor/bootstrap/dist/js/bootstrap.js"></script>
 
+  <!-- TimeZones Services -->
   <script src="/js/services/authentication-service.js"></script>
   <script src="/js/services/user-service.js"></script>
   <script src="/js/services/token-interceptor-service.js"></script>
   <script src="/js/services/flashmsg-interceptor-service.js"></script>
   <script src="/js/services/zones-service.js"></script>
 
+  <!-- TimeZones Controllers -->
   <script src="/js/controllers/sign-up-controller.js"></script>
   <script src="/js/controllers/login-controller.js"></script>
   <script src="/js/controllers/nav-bar-controller.js"></script>
   <script src="/js/controllers/zones-controller.js"></script>
 
+  <!-- TimeZones Filters -->
   <script src="/js/filters/moment-filter.js"></script>
 
+  <!-- TimeZones App -->
   <script src="/js/app.js"></script>
+  <!-- @endif -->
 
 </head>
 
@@ -76,7 +98,7 @@
       <ul class="nav navbar-nav navbar-right" data-ng-if="user.fullName">
         <li><a href="">{{user.fullName}}</a></li>
         <li><a href="/signup" data-ng-if="!user.fullName">Sign Up</a></li>
-        <li><a href="/logout" data-ng-if="user.fullName">Logout</a></li>
+        <li><a href="/logout" target="_self" data-ng-if="user.fullName">Logout</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right" data-ng-if="!user.fullName">
@@ -108,6 +130,11 @@
     </div>
   </div>
 </footer>
+
+<!-- @if USE_MINIFIED='true' -->
+<script src="/js/vendor.min.js"></script>
+<script src="/js/timezones.js"></script>
+<!-- @endif -->
 
 </body>
 </html>

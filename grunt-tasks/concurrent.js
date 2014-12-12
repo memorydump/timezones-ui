@@ -9,6 +9,12 @@ module.exports = function (grunt) {
       options: {
         logConcurrentOutput: true
       }
+    },
+    production: {
+      tasks: ['shell:mongo-start', 'nodemon:api', 'nodemon:client'],
+      options: {
+        logConcurrentOutput: false
+      }
     }
   });
 };

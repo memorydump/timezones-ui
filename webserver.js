@@ -12,14 +12,22 @@ proxy.on('error', function(e) {
   console.dir(e);
 });
 
-app.use(express.static(__dirname + '/client'));
+if (process.env.USE_MINIFIED) {
+  app.use(express.static(__dirname + '/build/client'));
+} else {
+  app.use(express.static(__dirname + '/client'));
+}
 
 router.all('/api/*', function(req, res) {
   proxy.web(req, res, { target: 'http://localhost:3001' });
 });
 
 router.get('/*', function(req, res) {
-  res.sendFile(__dirname + '/client/layouts/main.html');
+  if (process.env.USE_MINIFIED) {
+    res.sendFile(__dirname + '/build/client/layouts/main.html');
+  } else {
+    res.sendFile(__dirname + '/client/layouts/main.html');
+  }
 });
 
 app.use(router);
