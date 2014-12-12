@@ -79,18 +79,7 @@
     <div class="navbar-collapse collapse" id="navbar-main">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Zones <span class="caret"></span></a>
-          <ul class="dropdown-menu" aria-labelledby="themes">
-            <li data-ng-if="user.token"><a href="/zones/">My Zones</a></li>
-            <li class="divider"></li>
-            <li><a href="/zones">NY</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="/help/">Help</a>
-        </li>
-        <li>
-          <a href="/contactus">Contact Us</a>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="/zones" id="themes" data-ng-if="user.fullName">My Zones</a>
         </li>
       </ul>
 
